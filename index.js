@@ -56,7 +56,7 @@ app.get("/scrape", function(req, res) {
 
     });
 
-    $("articleInfo.a").each(function(i, element){
+    $(".articleInfo.a").each(function(i, element){
     	link = $(this).children("a").text();
     	title = $(this).children("a").attr("href");
 
@@ -70,10 +70,10 @@ app.get("/scrape", function(req, res) {
       });
 
     result.push({
-      Title: title,
-      Link: link,
-      Image:imageLink,
-      Summary:summary
+     title,
+      link,
+     imageLink,
+    summary
     });
     console.log(result);
 
