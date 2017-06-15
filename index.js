@@ -49,18 +49,18 @@ app.get("/scrape", function(req, res) {
   request("http://www.goal.com/en-us/news/archive/1?ICID=HP_TN_QL_4", function(error, response, html) {
     // Then, we load that into cheerio and save it to $ for a shorthand selector
     var $ = cheerio.load(html);
-    // Now, we grab every h2 within an article tag, and do the following:
 
-    $("div.imgBox").each(function(i, element){
-    	imageLink = $(this).children("a").attr("href");
-
-    });
-
-    $(".articleInfo.a").each(function(i, element){
+     $(".articleInfo").each(function(i, element){
     	link = $(this).children("a").text();
     	title = $(this).children("a").attr("href");
 
     });
+    
+    $("div.imgBox").each(function(i, element){
+    	imageLink = $(this).children("a").attr("href");
+
+    });
+   
 
     $("div.articleSummary").each(function(i, element) {      
 
@@ -110,9 +110,6 @@ app.get("/articles", function(req, res) {
       res.send(doc);
     }
   })
-
-
-  // TODO: Finish the route so it grabs all of the articles
 
 
 });
